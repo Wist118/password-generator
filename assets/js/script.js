@@ -11,24 +11,24 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
     charLength = prompt("Please select at least 8 characters and no more than 128 characters");
     charLength = parseInt(charLength);
-
+    // make sure number within range was input
     if(charLength < 8 || charLength > 128 || isNaN(charLength)) {
     charLength = alert("You need to provide a valid answer! Please try again.");
     return writePassword();
   }
-
+    // prompt user on which characters they would like
     var lowercase = confirm("Would you like to include lowercase characters?");
     var uppercase = confirm("Would you like to include uppercase characters?");
     var numeric = confirm("Would you like to include nurmeric characters?");
     var special = confirm("Would you like to include special characters?");
-
+    // loop to make sure user inputs at least one chatacter type
   while(!lowercase && !uppercase && !numeric && !special) {
     alert("You must choose at least one character type");
     return confirmChar();
   }
   // character select variable
   var charSelect = ""
-
+  // if statements to determine what user chose
   if(lowercase) {
     charSelect = charSelect.concat(lowerChar)
   }
@@ -51,9 +51,7 @@ function writePassword() {
       console.log(generatePassword);
       passwordText.value = generatePassword;
       }
-    }
-
-  //var password = generatePassword()
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
